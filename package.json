@@ -1,0 +1,37 @@
+{
+  "name": "deveyes",
+  "displayName": "DevEyes",
+  "description": "A smart eye-care reminder for developers.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.125.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:deveyes.startReminder",
+    "onCommand:deveyes.stopReminder"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "deveyes.startReminder",
+        "title": "DevEyes: Start Reminder"
+      },
+      {
+        "command": "deveyes.stopReminder",
+        "title": "DevEyes: Stop Reminder"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.125.0",
+    "@types/node": "24.x",
+    "eslint": "^9.0.0"
+  }
+}
