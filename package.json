@@ -23,7 +23,12 @@
       {
         "command": "deveyes.stopReminder",
         "title": "DevEyes: Stop Reminder"
+      },
+      {
+        "command": "deveyes.openDashboard",
+        "title": "DevEyes: Open Dashboard"
       }
+      
     ]
   },
   "scripts": {
