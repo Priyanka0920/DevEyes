@@ -12,28 +12,27 @@ DevEyes is a Visual Studio Code extension that helps developers reduce digital e
 - ⏰ 20-20-20 rule notifications
 - 🎯 Random eye exercises
 - 📊 Daily wellness statistics
-- 📈 Progress dashboard *(Coming Soon)*
-- 🔥 Daily streak tracking *(Coming Soon)*
-- 🏆 Achievements *(Coming Soon)*
-- 💧 Water reminders *(Coming Soon)*
-- 🧘 Stretch reminders *(Coming Soon)*
-- ⚙️ Custom reminder intervals *(Coming Soon)*
+- 📈 Progress dashboard 
+- 🔥 Daily streak tracking 
+- 🏆 Achievements 
+- 💧 Water reminders 
+- 🧘 Stretch reminders 
+- ⚙️ Custom reminder intervals 
 
----
 
-## 🚀 Installation
 
-### From Source
+# 🚀 Installation
+
+# From Source
 
 ```bash
 git clone https://github.com/Priyanka0920/DevEyes.git
 cd DevEyes
 npm install
-```
+
 
 Press **F5** in Visual Studio Code to launch the extension in the Extension Development Host.
 
----
 
 ## 🛠 Tech Stack
 
@@ -43,11 +42,10 @@ Press **F5** in Visual Studio Code to launch the extension in the Extension Deve
 - CSS
 - Git & GitHub
 
----
 
 ## 📁 Project Structure
 
-```text
+
 DevEyes
 │
 ├── src
@@ -55,24 +53,8 @@ DevEyes
 ├── test
 ├── package.json
 └── README.md
-```
 
----
 
-## 🗺 Roadmap
-
-- [x] Eye Reminder
-- [x] Random Eye Exercises
-- [ ] Daily Statistics
-- [ ] Dashboard
-- [ ] Charts
-- [ ] Status Bar
-- [ ] Settings
-- [ ] Streaks
-- [ ] Achievements
-- [ ] Marketplace Release
-
----
 
 ## 🤝 Contributing
 
@@ -80,13 +62,11 @@ Contributions, ideas, and feedback are welcome!
 
 Feel free to fork this repository and submit a pull request.
 
----
 
 ## 📄 License
 
 This project will be released under the MIT License.
 
----
 
 ## 👩‍💻 Author
 
@@ -94,6 +74,5 @@ This project will be released under the MIT License.
 
 GitHub: https://github.com/Priyanka0920
 
----
 
 ⭐ If you like this project, don't forget to star the repository!
