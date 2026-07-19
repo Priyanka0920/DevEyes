@@ -3,6 +3,7 @@
   "displayName": "DevEyes",
   "description": "A smart eye-care reminder for developers.",
   "version": "0.0.1",
+  "icon": "media/icon.png",
   "engines": {
     "vscode": "^1.125.0"
   },
@@ -11,7 +12,9 @@
   ],
   "activationEvents": [
     "onCommand:deveyes.startReminder",
-    "onCommand:deveyes.stopReminder"
+    "onCommand:deveyes.stopReminder",
+    "onCommand:deveyes.openDashboard",
+    "onCommand:deveyes.openSettings"
   ],
   "main": "./src/extension.js",
   "contributes": {
@@ -27,6 +30,10 @@
       {
         "command": "deveyes.openDashboard",
         "title": "DevEyes: Open Dashboard"
+      },
+      {
+    "command": "deveyes.openSettings",
+    "title": "DevEyes: Open Settings"
       }
       
     ]

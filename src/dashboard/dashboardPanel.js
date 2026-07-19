@@ -1,6 +1,7 @@
 const vscode = require("vscode");
 const statistics = require("../statistics/statisticsManager");
 const { getDashboardHtml } = require("./dashboardHtml");
+const streakManager = require("../analytics/streakManager");
 
 function openDashboard() {
 
@@ -15,7 +16,9 @@ function openDashboard() {
 
     const stats = statistics.getStatistics();
 
-    panel.webview.html = getDashboardHtml(stats);
+const streak = streakManager.getStreak();
+
+panel.webview.html = getDashboardHtml(stats, streak);
 
 }
 

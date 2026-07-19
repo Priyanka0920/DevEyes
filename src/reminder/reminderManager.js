@@ -1,13 +1,17 @@
 const scheduler = require("./scheduler");
 const notification = require("./notificationManager");
+const settingsManager = require("../settings/settingsManager");
 
 function startReminder() {
+
+    const interval =
+        settingsManager.getReminderInterval();
 
     scheduler.start(() => {
 
         notification.showReminder();
 
-    }, 0.33);
+    }, interval);
 
 }
 
@@ -17,7 +21,16 @@ function stopReminder() {
 
 }
 
+function isReminderRunning() {
+
+    return scheduler.isRunning();
+
+}
+
 module.exports = {
+
     startReminder,
-    stopReminder
+    stopReminder,
+    isReminderRunning
+
 };

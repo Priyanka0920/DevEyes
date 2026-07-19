@@ -1,25 +1,51 @@
 let timer = null;
 
-function start(callback, minutes = 20) {
+function start(callback, minutes) {
 
     stop();
 
+    const interval = Number(minutes) || 20;
+
     timer = setInterval(() => {
+
         callback();
-    }, minutes * 60 * 1000);
+
+    }, interval * 60 * 1000);
 
 }
 
 function stop() {
 
     if (timer) {
+
         clearInterval(timer);
         timer = null;
+
     }
 
 }
 
+function isRunning() {
+
+    return timer !== null;
+
+}
+
+function getRemainingStatus() {
+
+    return {
+
+        running: isRunning()
+
+    };
+
+}
+
 module.exports = {
+
     start,
-    stop
+    stop,
+    isRunning,
+    getRemainingStatus
+
 };

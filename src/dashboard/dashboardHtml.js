@@ -1,7 +1,6 @@
-const { getDashboardStyles } = require("./dashboardStyles");
-const { getDashboardScript } = require("./dashboardScript");
+const { renderPage } = require("../ui/layout");
 
-function getDashboardHtml(stats){
+function getDashboardHtml(stats, streak) {
 
     const total =
         stats.completed +
@@ -9,49 +8,42 @@ function getDashboardHtml(stats){
         stats.skipped;
 
     const percentage =
-        total===0
-        ?0
-        :Math.round((stats.completed/total)*100);
+        total === 0
+            ? 0
+            : Math.round((stats.completed / total) * 100);
 
-    return`
+    const goal = 10;
+    const goalProgress = Math.min(stats.completed, goal);
 
-<!DOCTYPE html>
+    const body = `
 
-<html>
+<div class="page-header">
 
-<head>
+    <div class="page-title">
 
-<meta charset="UTF-8">
+        DevEyes Dashboard
 
-<title>DevEyes</title>
+    </div>
 
-<style>
+    <div class="page-subtitle">
 
-${getDashboardStyles()}
+        Stay consistent. Healthy eyes improve productivity.
 
-</style>
-
-</head>
-
-<body>
-
-<div class="container">
-
-<div class="header">
-
-<h1>👀 DevEyes</h1>
-
-<p>Smart Eye Care for Developers</p>
+    </div>
 
 </div>
 
-<div class="cards">
+<div class="summary-grid">
 
-<div class="card">
+<div class="summary-card">
 
-<h2>👀 Completed</h2>
+<div class="summary-label">
 
-<div class="number">
+Completed
+
+</div>
+
+<div class="summary-number">
 
 ${stats.completed}
 
@@ -59,11 +51,15 @@ ${stats.completed}
 
 </div>
 
-<div class="card">
+<div class="summary-card">
 
-<h2>😴 Snoozed</h2>
+<div class="summary-label">
 
-<div class="number">
+Snoozed
+
+</div>
+
+<div class="summary-number">
 
 ${stats.snoozed}
 
@@ -71,11 +67,15 @@ ${stats.snoozed}
 
 </div>
 
-<div class="card">
+<div class="summary-card">
 
-<h2>❌ Skipped</h2>
+<div class="summary-label">
 
-<div class="number">
+Skipped
+
+</div>
+
+<div class="summary-number">
 
 ${stats.skipped}
 
@@ -85,80 +85,173 @@ ${stats.skipped}
 
 </div>
 
-<div class="section">
+<div class="card">
 
-<h2>📊 Today's Progress</h2>
+<div class="section-title">
+
+Today's Progress
+
+</div>
 
 <div class="progress">
 
 <div
-class="progress-bar"
+class="progress-fill"
 style="width:${percentage}%">
-</div>
 
 </div>
 
-<p class="percentage">
+</div>
 
-${percentage}% Completed
+<p class="progress-text">
+
+${percentage}% Completed Today
 
 </p>
 
 </div>
 
-<div class="section">
+<div class="card">
 
-<div class="streak">
+<div class="section-title">
 
-<h2>🔥 Current Streak</h2>
+Daily Goal
 
-<h1>0 Days</h1>
+</div>
+
+<div class="metric">
+
+<span>
+
+Completed Reminders
+
+</span>
+
+<span class="metric-value">
+
+${goalProgress} / ${goal}
+
+</span>
+
+</div>
+
+<div class="progress">
+
+<div
+class="progress-fill"
+style="width:${(goalProgress/goal)*100}%">
 
 </div>
 
 </div>
 
-<div class="section">
+</div>
 
-<div class="tip">
+<div class="card">
 
-<h2>💡 Eye Care Tip</h2>
+<div class="section-title">
 
-<p>
+Streak
 
-Remember the 20-20-20 Rule:
-Every 20 minutes,
-look 20 feet away
-for 20 seconds.
+</div>
+
+<div class="metric">
+
+<span>
+
+Current Streak
+
+</span>
+
+<span class="metric-value">
+
+${streak.currentStreak} Day${streak.currentStreak===1?"":"s"}
+
+</span>
+
+</div>
+
+<div class="metric">
+
+<span>
+
+Best Streak
+
+</span>
+
+<span class="metric-value">
+
+${streak.bestStreak} Day${streak.bestStreak===1?"":"s"}
+
+</span>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-title">
+
+Recent Activity
+
+</div>
+
+<div class="activity-item">
+
+Reminder Completed
+
+</div>
+
+<div class="activity-item">
+
+Reminder Snoozed
+
+</div>
+
+<div class="activity-item">
+
+Reminder Skipped
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-title">
+
+Eye Care Tip
+
+</div>
+
+<p class="tip-text">
+
+Follow the <b>20-20-20 Rule</b>.
+
+Take a 20-second break every 20 minutes and focus on something approximately 20 feet away.
+
+Small habits can make a big difference over long coding sessions.
 
 </p>
-
-</div>
 
 </div>
 
 <div class="footer">
 
-DevEyes © 2026
+DevEyes v1.0.0
 
 </div>
-
-</div>
-
-<script>
-
-${getDashboardScript()}
-
-</script>
-
-</body>
-
-</html>
 
 `;
 
+    return renderPage(
+        "DevEyes Dashboard",
+        body
+    );
+
 }
 
-module.exports={
+module.exports = {
     getDashboardHtml
 };

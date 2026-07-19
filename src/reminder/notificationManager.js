@@ -1,6 +1,9 @@
 const vscode = require("vscode");
 const { getRandomExercise } = require("./eyeExercises");
+
 const statistics = require("../statistics/statisticsManager");
+const streakManager = require("../analytics/streakManager");
+const activityManager = require("../analytics/activityManager");
 
 function showReminder() {
 
@@ -19,6 +22,12 @@ function showReminder() {
 
                 statistics.complete();
 
+                streakManager.updateStreak();
+
+                activityManager.addActivity(
+                    "Completed Reminder"
+                );
+
                 vscode.window.showInformationMessage(
                     "🎉 Great Job!"
                 );
@@ -28,6 +37,10 @@ function showReminder() {
             case "😴 Snooze":
 
                 statistics.snooze();
+
+                activityManager.addActivity(
+                    "Snoozed Reminder"
+                );
 
                 vscode.window.showInformationMessage(
                     "😴 Reminder Snoozed"
@@ -39,6 +52,10 @@ function showReminder() {
 
                 statistics.skip();
 
+                activityManager.addActivity(
+                    "Skipped Reminder"
+                );
+
                 vscode.window.showInformationMessage(
                     "❌ Reminder Skipped"
                 );
@@ -47,7 +64,9 @@ function showReminder() {
 
         }
 
-        console.log(statistics.getStatistics());
+        console.log(
+            statistics.getStatistics()
+        );
 
     });
 
