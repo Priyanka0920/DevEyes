@@ -4,7 +4,7 @@ const KEY = "activityHistory";
 
 function getActivities() {
 
-    return storage.get(KEY, []);
+    return storage.load(KEY, []);
 
 }
 
@@ -28,13 +28,13 @@ function addActivity(action) {
 
     }
 
-    storage.update(KEY, history);
+    storage.save(KEY, history);
 
 }
 
 function reset() {
 
-    storage.update(KEY, []);
+    storage.save(KEY, []);
 
 }
 

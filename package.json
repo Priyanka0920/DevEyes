@@ -2,14 +2,33 @@
   "name": "deveyes",
   "displayName": "DevEyes",
   "description": "A smart eye-care reminder for developers.",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "publisher": "priyanka0920",
   "icon": "media/icon.png",
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/Priyanka0920/DevEyes.git"
+},
   "engines": {
     "vscode": "^1.125.0"
   },
   "categories": [
-    "Other"
+    "Productivity"
   ],
+  "keywords": [
+  "eye care",
+  "reminder",
+  "productivity",
+  "developer",
+  "health",
+  "break",
+  "coding",
+  "wellness"
+],
+"galleryBanner": {
+  "color": "#1E1E2E",
+  "theme": "dark"
+},
   "activationEvents": [
     "onCommand:deveyes.startReminder",
     "onCommand:deveyes.stopReminder",
